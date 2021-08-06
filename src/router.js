@@ -1,10 +1,9 @@
 import Vue from "vue";
 import Router from "vue-router";
-import Home from './views/Home.vue';
+import Home from "./views/Home.vue";
 
 //tell vue to use router
 Vue.use(Router);
-
 
 export default new Router({
   routes: [
@@ -43,6 +42,13 @@ export default new Router({
       component: () =>
         import(/* webpackChunkName: "hawaii" */ "./views/Hawaii.vue"),
     },
+    {
+      path: "/details/:id",
+      name: "DestinationDetails",
+      component: () =>
+        import(
+          /* webpackChunkName: "DestinationDetails" */ "./views/DestinationDetails.vue"
+        ),
+    },
   ],
 });
-
