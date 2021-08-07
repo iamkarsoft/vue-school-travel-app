@@ -6,7 +6,7 @@ import Home from "./views/Home.vue";
 Vue.use(Router);
 
 export default new Router({
-  mode:"history",
+  mode: "history",
   routes: [
     {
       path: "/",
@@ -19,7 +19,7 @@ export default new Router({
       name: "about",
       component: () =>
         import(/* webpackChunkName: "about" */ "./views/About.vue"),
-        props: true,
+      props: true,
     },
     {
       path: "/details/:slug",
@@ -28,7 +28,18 @@ export default new Router({
         import(
           /* webpackChunkName: "DestinationDetails" */ "./views/DestinationDetails.vue"
         ),
-        props: true,
+      props: true,
+      children: [
+        {
+          path: ":experienceSlug",
+          name: "experienceDetails",
+          props: true,
+          component: () =>
+            import(
+              /* webpackChunckName: "ExperienceDetails" */ "./views/ExperienceDetails.vue"
+            ),
+        },
+      ],
     },
   ],
 });
