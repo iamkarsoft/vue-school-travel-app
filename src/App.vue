@@ -1,7 +1,9 @@
 <template>
   <div id="app">
     <TheNavigation></TheNavigation>
-    <router-view :key="$route.path"></router-view>
+    <transition name="slide" mode="out-in">
+      <router-view :key="$route.path"></router-view>
+    </transition>
   </div>
 </template>
 
@@ -38,4 +40,16 @@ export default {
   color: #42b983;
   font-weight: 900;
 }
+
+.slide-enter-active,
+.slide-leave-active{
+  transition: opacity 1s, transform 1s;
+}
+
+.slide-enter,
+.slide-leave-to{
+  opacity:0;
+  transform: translateX(-20%);
+}
+
 </style>
